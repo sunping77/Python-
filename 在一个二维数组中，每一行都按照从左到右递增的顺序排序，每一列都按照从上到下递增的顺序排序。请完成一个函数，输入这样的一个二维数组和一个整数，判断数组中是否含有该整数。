@@ -1,0 +1,29 @@
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+        if not array:
+            return False
+        rows = len(array)
+        cols = len(array[0])
+
+        row = 0
+        col = cols - 1
+        while row < rows and col >= 0:
+            if array[row][col] > target:
+                col -= 1
+            elif array[row][col] < target:
+                row += 1
+            else:
+                return True
+        return False
+
+
+if __name__ == "__main__":
+    array = [[1, 2, 8, 9], [2, 4, 9, 12], [4, 7, 10, 13], [6, 8, 11, 15]]
+    target = 7
+    S = Solution()
+    if S.Find(target, array):
+        print("OK!")
+    else:
+        print("Not Found!")
